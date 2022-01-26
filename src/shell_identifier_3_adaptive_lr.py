@@ -90,10 +90,10 @@ class ShellIdentifier:
 
             self.multi_gpu_model = multi_gpu_model(self.model,
                                                    gpus=self.gpu_count)
-            self.multi_gpu_model.compile(optimizer=SGD(lr=0.02, momentum=0.9), loss='mse')
+            self.multi_gpu_model.compile(optimizer=SGD(lr=0.001, momentum=0.9), loss='mse')
         else:
             self.model = self.build_model(**model_hypers)
-            self.model.compile(optimizer=SGD(lr=0.02, momentum=0.9), loss='mse')
+            self.model.compile(optimizer=SGD(lr=0.001, momentum=0.9), loss='mse')
 
     def load_init(self, name):
         if self.gpu_count > 1:
@@ -102,10 +102,10 @@ class ShellIdentifier:
 
             self.multi_gpu_model = multi_gpu_model(self.model,
                                                    gpus=self.gpu_count)
-            self.multi_gpu_model.compile(optimizer=SGD(lr=0.02, momentum=0.9), loss='mse')
+            self.multi_gpu_model.compile(optimizer=SGD(lr=0.001, momentum=0.9), loss='mse')
         else:
             self.model = load_model(name)
-            self.model.compile(optimizer=SGD(lr=0.02, momentum=0.9), loss='mse')
+            self.model.compile(optimizer=SGD(lr=0.001, momentum=0.9), loss='mse')
 
     def fit(self, x, y, epochs=1, batch_size=64, verbose=1):
         if self.gpu_count > 1:
